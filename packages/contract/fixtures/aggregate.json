@@ -1,0 +1,432 @@
+{
+ "schemaVersion": 1,
+ "generatedAt": "2026-11-12T00:00:00Z",
+ "series": [
+  {
+   "series": "0.34",
+   "releases": [
+    "0.34.0",
+    "0.34.1"
+   ],
+   "catalogRelease": "0.34.1",
+   "games": 5000,
+   "wins": 60,
+   "firstGame": "2026-05-01T00:00:00Z",
+   "lastGame": "2026-11-11T00:00:00Z"
+  }
+ ],
+ "places": [
+  {
+   "series": "0.34",
+   "place": "D:1",
+   "reached": 5000,
+   "reachedMethod": "implied",
+   "reachedGrade": "main",
+   "deathsTotal": 420
+  },
+  {
+   "series": "0.34",
+   "place": "D:2",
+   "reached": 4100,
+   "reachedMethod": "implied",
+   "reachedGrade": "main",
+   "deathsTotal": 260
+  },
+  {
+   "series": "0.34",
+   "place": "D:3",
+   "reached": 3500,
+   "reachedMethod": "implied",
+   "reachedGrade": "main",
+   "deathsTotal": 230
+  },
+  {
+   "series": "0.34",
+   "place": "D:4",
+   "reached": 3000,
+   "reachedMethod": "implied",
+   "reachedGrade": "main",
+   "deathsTotal": 190
+  },
+  {
+   "series": "0.34",
+   "place": "D:5",
+   "reached": 2600,
+   "reachedMethod": "implied",
+   "reachedGrade": "main",
+   "deathsTotal": 160
+  },
+  {
+   "series": "0.34",
+   "place": "Temple",
+   "reached": 2400,
+   "reachedMethod": "implied",
+   "reachedGrade": "main",
+   "deathsTotal": 0
+  },
+  {
+   "series": "0.34",
+   "place": "Lair:1",
+   "reached": 1500,
+   "reachedMethod": "implied",
+   "reachedGrade": "main",
+   "deathsTotal": 180
+  },
+  {
+   "series": "0.34",
+   "place": "Orc:1",
+   "reached": 1200,
+   "reachedMethod": "implied",
+   "reachedGrade": "main",
+   "deathsTotal": 140
+  }
+ ],
+ "killers": [
+  {
+   "series": "0.34",
+   "place": "D:1",
+   "key": "ball_python",
+   "variant": "",
+   "deaths": 12,
+   "exposure": 1500.0,
+   "presentExposure": 1295.793678003681,
+   "firewood": false,
+   "hostileFraction": 1.0,
+   "class": "native"
+  },
+  {
+   "series": "0.34",
+   "place": "D:1",
+   "key": "goblin",
+   "variant": "",
+   "deaths": 90,
+   "exposure": 7000.0,
+   "presentExposure": 3766.836189716184,
+   "firewood": false,
+   "hostileFraction": 1.0,
+   "class": "native"
+  },
+  {
+   "series": "0.34",
+   "place": "D:1",
+   "key": "jackal",
+   "variant": "",
+   "deaths": 150,
+   "exposure": 8000.0,
+   "presentExposure": 3990.349928188558,
+   "firewood": false,
+   "hostileFraction": 1.0,
+   "class": "native"
+  },
+  {
+   "series": "0.34",
+   "place": "D:1",
+   "key": "kobold",
+   "variant": "",
+   "deaths": 80,
+   "exposure": 5500.0,
+   "presentExposure": 3335.454746458044,
+   "firewood": false,
+   "hostileFraction": 1.0,
+   "class": "native"
+  },
+  {
+   "series": "0.34",
+   "place": "D:1",
+   "key": "@poison",
+   "variant": "",
+   "deaths": 88,
+   "class": "cause"
+  },
+  {
+   "series": "0.34",
+   "place": "D:2",
+   "key": "goblin",
+   "variant": "",
+   "deaths": 40,
+   "exposure": 4920.0,
+   "presentExposure": 2864.9500744177517,
+   "firewood": false,
+   "hostileFraction": 1.0,
+   "class": "native"
+  },
+  {
+   "series": "0.34",
+   "place": "D:2",
+   "key": "jackal",
+   "variant": "",
+   "deaths": 50,
+   "exposure": 4920.0,
+   "presentExposure": 2864.9500744177517,
+   "firewood": false,
+   "hostileFraction": 1.0,
+   "class": "native"
+  },
+  {
+   "series": "0.34",
+   "place": "D:2",
+   "key": "kobold",
+   "variant": "",
+   "deaths": 70,
+   "exposure": 4920.0,
+   "presentExposure": 2864.9500744177517,
+   "firewood": false,
+   "hostileFraction": 1.0,
+   "class": "native"
+  },
+  {
+   "series": "0.34",
+   "place": "D:2",
+   "key": "orc",
+   "variant": "",
+   "deaths": 30,
+   "exposure": 2050.0,
+   "presentExposure": 1613.0953720733003,
+   "firewood": false,
+   "hostileFraction": 1.0,
+   "class": "native"
+  },
+  {
+   "series": "0.34",
+   "place": "D:2",
+   "key": "@poison",
+   "variant": "",
+   "deaths": 70,
+   "class": "cause"
+  },
+  {
+   "series": "0.34",
+   "place": "D:3",
+   "key": "goblin",
+   "variant": "",
+   "deaths": 0,
+   "exposure": 3150.0,
+   "presentExposure": 2076.8733968438833,
+   "firewood": false,
+   "hostileFraction": 1.0,
+   "class": "native"
+  },
+  {
+   "series": "0.34",
+   "place": "D:3",
+   "key": "jackal",
+   "variant": "",
+   "deaths": 0,
+   "exposure": 2800.0,
+   "presentExposure": 1927.2181728103442,
+   "firewood": false,
+   "hostileFraction": 1.0,
+   "class": "native"
+  },
+  {
+   "series": "0.34",
+   "place": "D:3",
+   "key": "kobold",
+   "variant": "",
+   "deaths": 30,
+   "exposure": 3500.0,
+   "presentExposure": 2212.2884473877853,
+   "firewood": false,
+   "hostileFraction": 1.0,
+   "class": "native"
+  },
+  {
+   "series": "0.34",
+   "place": "D:3",
+   "key": "orc",
+   "variant": "",
+   "deaths": 60,
+   "exposure": 3150.0,
+   "presentExposure": 2076.8733968438833,
+   "firewood": false,
+   "hostileFraction": 1.0,
+   "class": "native"
+  },
+  {
+   "series": "0.34",
+   "place": "D:3",
+   "key": "sigmund",
+   "variant": "",
+   "deaths": 45,
+   "class": "unexpected"
+  },
+  {
+   "series": "0.34",
+   "place": "D:3",
+   "key": "@poison",
+   "variant": "",
+   "deaths": 95,
+   "class": "cause"
+  },
+  {
+   "series": "0.34",
+   "place": "D:4",
+   "key": "kobold",
+   "variant": "",
+   "deaths": 0,
+   "exposure": 2100.0,
+   "presentExposure": 1510.1359597228784,
+   "firewood": false,
+   "hostileFraction": 1.0,
+   "class": "native"
+  },
+  {
+   "series": "0.34",
+   "place": "D:4",
+   "key": "ogre",
+   "variant": "",
+   "deaths": 40,
+   "exposure": 150.0,
+   "presentExposure": 146.2969323300881,
+   "firewood": false,
+   "hostileFraction": 1.0,
+   "class": "native"
+  },
+  {
+   "series": "0.34",
+   "place": "D:4",
+   "key": "orc",
+   "variant": "",
+   "deaths": 70,
+   "exposure": 3900.0,
+   "presentExposure": 2182.294410155338,
+   "firewood": false,
+   "hostileFraction": 1.0,
+   "class": "native"
+  },
+  {
+   "series": "0.34",
+   "place": "D:4",
+   "key": "@poison",
+   "variant": "",
+   "deaths": 80,
+   "class": "cause"
+  },
+  {
+   "series": "0.34",
+   "place": "D:5",
+   "key": "ogre",
+   "variant": "",
+   "deaths": 30,
+   "exposure": 208.0,
+   "presentExposure": 199.87759108192262,
+   "firewood": false,
+   "hostileFraction": 1.0,
+   "class": "native"
+  },
+  {
+   "series": "0.34",
+   "place": "D:5",
+   "key": "orc",
+   "variant": "",
+   "deaths": 40,
+   "exposure": 3900.0,
+   "presentExposure": 2019.7713497541756,
+   "firewood": false,
+   "hostileFraction": 1.0,
+   "class": "native"
+  },
+  {
+   "series": "0.34",
+   "place": "D:5",
+   "key": "orc_warrior",
+   "variant": "",
+   "deaths": 50,
+   "exposure": 780.0,
+   "presentExposure": 673.8127125619142,
+   "firewood": false,
+   "hostileFraction": 1.0,
+   "class": "native"
+  },
+  {
+   "series": "0.34",
+   "place": "D:5",
+   "key": "@poison",
+   "variant": "",
+   "deaths": 40,
+   "class": "cause"
+  },
+  {
+   "series": "0.34",
+   "place": "Lair:1",
+   "key": "hydra",
+   "variant": "heads=7",
+   "deaths": 70,
+   "exposure": 375.0,
+   "presentExposure": 331.76854397862445,
+   "firewood": false,
+   "hostileFraction": 1.0,
+   "class": "native"
+  },
+  {
+   "series": "0.34",
+   "place": "Lair:1",
+   "key": "yak",
+   "variant": "",
+   "deaths": 60,
+   "exposure": 3600.0,
+   "presentExposure": 1363.8892041629342,
+   "firewood": false,
+   "hostileFraction": 1.0,
+   "class": "native"
+  },
+  {
+   "series": "0.34",
+   "place": "Lair:1",
+   "key": "@poison",
+   "variant": "",
+   "deaths": 50,
+   "class": "cause"
+  },
+  {
+   "series": "0.34",
+   "place": "Orc:1",
+   "key": "ogre",
+   "variant": "",
+   "deaths": 30,
+   "exposure": 480.0,
+   "presentExposure": 395.58258327566125,
+   "firewood": false,
+   "hostileFraction": 1.0,
+   "class": "native"
+  },
+  {
+   "series": "0.34",
+   "place": "Orc:1",
+   "key": "orc",
+   "variant": "",
+   "deaths": 40,
+   "exposure": 9000.0,
+   "presentExposure": 1199.335782439749,
+   "firewood": false,
+   "hostileFraction": 1.0,
+   "class": "native"
+  },
+  {
+   "series": "0.34",
+   "place": "Orc:1",
+   "key": "orc_warrior",
+   "variant": "",
+   "deaths": 50,
+   "exposure": 1920.0,
+   "presentExposure": 957.6839827652539,
+   "firewood": false,
+   "hostileFraction": 1.0,
+   "class": "native"
+  },
+  {
+   "series": "0.34",
+   "place": "Orc:1",
+   "key": "@poison",
+   "variant": "",
+   "deaths": 20,
+   "class": "cause"
+  }
+ ],
+ "causes": {
+  "@poison": "poison",
+  "@quit": "quit",
+  "@starvation": "starvation",
+  "@zot": "Zot"
+ }
+}

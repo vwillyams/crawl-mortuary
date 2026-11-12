@@ -1,0 +1,7 @@
+v=0.34.1:vlong=0.34.1-5-gfd259fce64:lv=0.1:tiles=1:name=alice:race=Gargoyle:cls=Fire Elementalist:char=GrFE:xl=2:place=D::1:br=D:lvl=1:absdepth=1:turn=1200:nrune=0:urune=0:start=20261012174912S:end=20261012175041S:ktyp=mon:killer=a gnoll:dam=5:kaux=a +0 spear:seed=12345:tmsg=slain by a gnoll:vmsg=slain by a gnoll (a +0 spear)
+v=0.34.1:name=bob:race=Minotaur:cls=Fighter:xl=12:place=Lair::3:br=Lair:lvl=3:turn=30000:nrune=0:urune=0:start=20261001100000S:end=20261001130000S:ktyp=mon:killer=a seven-headed hydra:killermap=lair_hydra_den:tmsg=slain by a seven-headed hydra
+v=0.34.1:name=carol:race=Human:cls=Hunter:xl=27:place=D::1:br=D:lvl=1:turn=90000:nrune=3:urune=3:start=20260901100000S:end=20260905100000S:ktyp=winning:tmsg=escaped with the Orb!
+v=0.35-a0:name=dave:race=Human:cls=Hunter:xl=1:place=D::1:br=D:lvl=1:turn=10:nrune=0:urune=0:start=20261001100000S:end=20261001100100S:ktyp=quitting:tmsg=quit the game
+v=0.34.1:name=qw:race=Deep Elf:cls=Wizard:xl=3:place=Temple:br=Temple:lvl=1:turn=5000:nrune=0:urune=0:start=20261002100000S:end=20261002110000S:ktyp=pois:tmsg=succumbed to poison
+v=0.33.1:name=erin:race=Human:cls=Hunter:xl=1:place=D::2:br=D:lvl=2:turn=10:nrune=0:urune=0:start=20261001100000S:end=20261001100100S:ktyp=mon:killer=a jackal:tmsg=slain by a jackal
+this line is garbage

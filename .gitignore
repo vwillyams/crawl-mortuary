@@ -1,0 +1,16 @@
+node_modules/
+.next/
+out/
+dist/
+*.log
+.DS_Store
+# raw / large pipeline data (kept outside git; see data/README.md)
+data/raw/
+data/games/*
+!data/games/.gitkeep
+# crawl checkouts/builds used by levelgen
+levelgen/.crawl/
+levelgen/.build/
+levelgen/.out/
+# aggregate is built from fixture/synthetic games until real game data lands; commit it once it's real
+data/aggregate/

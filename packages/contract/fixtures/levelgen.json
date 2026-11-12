@@ -1,0 +1,328 @@
+{
+ "schemaVersion": 1,
+ "release": "0.34.1",
+ "crawlCommit": "fixture",
+ "seeds": 1000,
+ "places": [
+  {
+   "place": "D:1",
+   "instances": 1000,
+   "seeds": 1000,
+   "source": "pregen-lua"
+  },
+  {
+   "place": "D:2",
+   "instances": 1000,
+   "seeds": 1000,
+   "source": "pregen-lua"
+  },
+  {
+   "place": "D:3",
+   "instances": 1000,
+   "seeds": 1000,
+   "source": "pregen-lua"
+  },
+  {
+   "place": "D:4",
+   "instances": 1000,
+   "seeds": 1000,
+   "source": "pregen-lua"
+  },
+  {
+   "place": "D:5",
+   "instances": 1000,
+   "seeds": 1000,
+   "source": "pregen-lua"
+  },
+  {
+   "place": "Lair:1",
+   "instances": 1000,
+   "seeds": 1000,
+   "source": "pregen-lua"
+  },
+  {
+   "place": "Orc:1",
+   "instances": 1000,
+   "seeds": 1000,
+   "source": "pregen-lua"
+  }
+ ],
+ "monsters": [
+  {
+   "place": "D:1",
+   "key": "goblin",
+   "variant": "",
+   "sum": 1400,
+   "sumSq": 3360,
+   "present": 753,
+   "vaultSum": 420,
+   "hostileSum": 1400,
+   "unique": false,
+   "firewood": false
+  },
+  {
+   "place": "D:1",
+   "key": "kobold",
+   "variant": "",
+   "sum": 1100,
+   "sumSq": 2310,
+   "present": 667,
+   "vaultSum": 330,
+   "hostileSum": 1100,
+   "unique": false,
+   "firewood": false
+  },
+  {
+   "place": "D:1",
+   "key": "jackal",
+   "variant": "",
+   "sum": 1600,
+   "sumSq": 4160,
+   "present": 798,
+   "vaultSum": 480,
+   "hostileSum": 1600,
+   "unique": false,
+   "firewood": false
+  },
+  {
+   "place": "D:1",
+   "key": "ball_python",
+   "variant": "",
+   "sum": 300,
+   "sumSq": 390,
+   "present": 259,
+   "vaultSum": 90,
+   "hostileSum": 300,
+   "unique": false,
+   "firewood": false
+  },
+  {
+   "place": "D:2",
+   "key": "goblin",
+   "variant": "",
+   "sum": 1200,
+   "sumSq": 2640,
+   "present": 699,
+   "vaultSum": 360,
+   "hostileSum": 1200,
+   "unique": false,
+   "firewood": false
+  },
+  {
+   "place": "D:2",
+   "key": "kobold",
+   "variant": "",
+   "sum": 1200,
+   "sumSq": 2640,
+   "present": 699,
+   "vaultSum": 360,
+   "hostileSum": 1200,
+   "unique": false,
+   "firewood": false
+  },
+  {
+   "place": "D:2",
+   "key": "jackal",
+   "variant": "",
+   "sum": 1200,
+   "sumSq": 2640,
+   "present": 699,
+   "vaultSum": 360,
+   "hostileSum": 1200,
+   "unique": false,
+   "firewood": false
+  },
+  {
+   "place": "D:2",
+   "key": "orc",
+   "variant": "",
+   "sum": 500,
+   "sumSq": 750,
+   "present": 393,
+   "vaultSum": 150,
+   "hostileSum": 500,
+   "unique": false,
+   "firewood": false
+  },
+  {
+   "place": "D:3",
+   "key": "goblin",
+   "variant": "",
+   "sum": 900,
+   "sumSq": 1710,
+   "present": 593,
+   "vaultSum": 270,
+   "hostileSum": 900,
+   "unique": false,
+   "firewood": false
+  },
+  {
+   "place": "D:3",
+   "key": "kobold",
+   "variant": "",
+   "sum": 1000,
+   "sumSq": 2000,
+   "present": 632,
+   "vaultSum": 300,
+   "hostileSum": 1000,
+   "unique": false,
+   "firewood": false
+  },
+  {
+   "place": "D:3",
+   "key": "orc",
+   "variant": "",
+   "sum": 900,
+   "sumSq": 1710,
+   "present": 593,
+   "vaultSum": 270,
+   "hostileSum": 900,
+   "unique": false,
+   "firewood": false
+  },
+  {
+   "place": "D:3",
+   "key": "jackal",
+   "variant": "",
+   "sum": 800,
+   "sumSq": 1440,
+   "present": 551,
+   "vaultSum": 240,
+   "hostileSum": 800,
+   "unique": false,
+   "firewood": false
+  },
+  {
+   "place": "D:4",
+   "key": "orc",
+   "variant": "",
+   "sum": 1300,
+   "sumSq": 2990,
+   "present": 727,
+   "vaultSum": 390,
+   "hostileSum": 1300,
+   "unique": false,
+   "firewood": false
+  },
+  {
+   "place": "D:4",
+   "key": "kobold",
+   "variant": "",
+   "sum": 700,
+   "sumSq": 1190,
+   "present": 503,
+   "vaultSum": 210,
+   "hostileSum": 700,
+   "unique": false,
+   "firewood": false
+  },
+  {
+   "place": "D:4",
+   "key": "ogre",
+   "variant": "",
+   "sum": 50,
+   "sumSq": 52,
+   "present": 49,
+   "vaultSum": 15,
+   "hostileSum": 50,
+   "unique": false,
+   "firewood": false
+  },
+  {
+   "place": "D:5",
+   "key": "orc",
+   "variant": "",
+   "sum": 1500,
+   "sumSq": 3750,
+   "present": 777,
+   "vaultSum": 450,
+   "hostileSum": 1500,
+   "unique": false,
+   "firewood": false
+  },
+  {
+   "place": "D:5",
+   "key": "orc_warrior",
+   "variant": "",
+   "sum": 300,
+   "sumSq": 390,
+   "present": 259,
+   "vaultSum": 90,
+   "hostileSum": 300,
+   "unique": false,
+   "firewood": false
+  },
+  {
+   "place": "D:5",
+   "key": "ogre",
+   "variant": "",
+   "sum": 80,
+   "sumSq": 86,
+   "present": 77,
+   "vaultSum": 24,
+   "hostileSum": 80,
+   "unique": false,
+   "firewood": false
+  },
+  {
+   "place": "Lair:1",
+   "key": "yak",
+   "variant": "",
+   "sum": 2400,
+   "sumSq": 8160,
+   "present": 909,
+   "vaultSum": 720,
+   "hostileSum": 2400,
+   "unique": false,
+   "firewood": false
+  },
+  {
+   "place": "Lair:1",
+   "key": "hydra",
+   "variant": "heads=7",
+   "sum": 250,
+   "sumSq": 312,
+   "present": 221,
+   "vaultSum": 75,
+   "hostileSum": 250,
+   "unique": false,
+   "firewood": false
+  },
+  {
+   "place": "Orc:1",
+   "key": "orc",
+   "variant": "",
+   "sum": 7500,
+   "sumSq": 63750,
+   "present": 999,
+   "vaultSum": 2250,
+   "hostileSum": 7500,
+   "unique": false,
+   "firewood": false
+  },
+  {
+   "place": "Orc:1",
+   "key": "orc_warrior",
+   "variant": "",
+   "sum": 1600,
+   "sumSq": 4160,
+   "present": 798,
+   "vaultSum": 480,
+   "hostileSum": 1600,
+   "unique": false,
+   "firewood": false
+  },
+  {
+   "place": "Orc:1",
+   "key": "ogre",
+   "variant": "",
+   "sum": 400,
+   "sumSq": 560,
+   "present": 330,
+   "vaultSum": 120,
+   "hostileSum": 400,
+   "unique": false,
+   "firewood": false
+  }
+ ]
+}

@@ -1,0 +1,12 @@
+{
+  "_source": "Bot account names, matched case-insensitively. Initial list from dcss-stats apps/api/prisma/seedData.ts `bots` (MIT, https://github.com/O4epegb/dcss-stats). TODO(ingest): merge Sequell's bot list if one is published (none found in crawl/sequell config as of 2026-11-12).",
+  "bots": [
+    "autorobin", "xw", "auto7hm", "rw", "qw", "ow", "qwrobin", "gw", "notqw", "jw",
+    "parabodrick", "hyperqwbe", "cashybrid", "tstbtto", "parabolic", "oppbolic", "ew",
+    "rushxxi", "gaubot", "cojitobot", "paulcdejean", "otabotab", "nakatomy", "testingqw",
+    "beemell", "beem", "drasked", "phybot", "medicine", "dracbot", "whoyougonnacall",
+    "khrogbot", "jwbot", "lovelain", "autocrawlbot", "swippen", "cotteux", "someone4956",
+    "nofunallowed", "cosagabot", "cloudy120", "patr1k", "chaobot", "esqueletobot", "laya",
+    "kgb0614", "fastman", "idfk", "a3bot", "gbos"
+  ]
+}

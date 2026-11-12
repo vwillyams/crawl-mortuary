@@ -1,0 +1,323 @@
+{
+ "schemaVersion": 1,
+ "release": "0.34.1",
+ "series": "0.34",
+ "crawlCommit": "fixture",
+ "branches": [
+  {
+   "abbrev": "D",
+   "name": "Dungeon",
+   "longName": "the Dungeon",
+   "depth": 15,
+   "parent": null,
+   "entryMin": null,
+   "entryMax": null,
+   "kind": "main",
+   "runes": []
+  },
+  {
+   "abbrev": "Temple",
+   "name": "Temple",
+   "longName": "the Ecumenical Temple",
+   "depth": 1,
+   "parent": "D",
+   "entryMin": 4,
+   "entryMax": 7,
+   "kind": "main",
+   "runes": []
+  },
+  {
+   "abbrev": "Orc",
+   "name": "Orcish Mines",
+   "longName": "the Orcish Mines",
+   "depth": 2,
+   "parent": "D",
+   "entryMin": 9,
+   "entryMax": 12,
+   "kind": "main",
+   "runes": []
+  },
+  {
+   "abbrev": "Lair",
+   "name": "Lair",
+   "longName": "the Lair of Beasts",
+   "depth": 5,
+   "parent": "D",
+   "entryMin": 8,
+   "entryMax": 11,
+   "kind": "main",
+   "runes": []
+  }
+ ],
+ "monsters": [
+  {
+   "key": "goblin",
+   "enumName": "MONS_GOBLIN",
+   "name": "goblin",
+   "plural": "goblins",
+   "unique": false,
+   "glyph": {
+    "char": "g",
+    "colour": "lightgrey"
+   },
+   "tile": "MONS_GOBLIN",
+   "hd": 1,
+   "ac": 0,
+   "ev": 10,
+   "flags": [],
+   "spawns": [
+    {
+     "branch": "D",
+     "minDepth": 1,
+     "maxDepth": 4,
+     "rarity": 515,
+     "distribution": "fall"
+    }
+   ]
+  },
+  {
+   "key": "kobold",
+   "enumName": "MONS_KOBOLD",
+   "name": "kobold",
+   "plural": "kobolds",
+   "unique": false,
+   "glyph": {
+    "char": "K",
+    "colour": "brown"
+   },
+   "tile": "MONS_KOBOLD",
+   "hd": 1,
+   "ac": 2,
+   "ev": 12,
+   "flags": [],
+   "spawns": [
+    {
+     "branch": "D",
+     "minDepth": 1,
+     "maxDepth": 5,
+     "rarity": 450,
+     "distribution": "fall"
+    }
+   ]
+  },
+  {
+   "key": "jackal",
+   "enumName": "MONS_JACKAL",
+   "name": "jackal",
+   "plural": "jackals",
+   "unique": false,
+   "glyph": {
+    "char": "h",
+    "colour": "brown"
+   },
+   "tile": "MONS_JACKAL",
+   "hd": 1,
+   "ac": 2,
+   "ev": 12,
+   "flags": [],
+   "spawns": [
+    {
+     "branch": "D",
+     "minDepth": 1,
+     "maxDepth": 4,
+     "rarity": 400,
+     "distribution": "fall"
+    }
+   ]
+  },
+  {
+   "key": "orc",
+   "enumName": "MONS_ORC",
+   "name": "orc",
+   "plural": "orcs",
+   "unique": false,
+   "glyph": {
+    "char": "o",
+    "colour": "lightred"
+   },
+   "tile": "MONS_ORC",
+   "hd": 1,
+   "ac": 0,
+   "ev": 10,
+   "flags": [],
+   "spawns": [
+    {
+     "branch": "D",
+     "minDepth": 2,
+     "maxDepth": 10,
+     "rarity": 400,
+     "distribution": "flat"
+    },
+    {
+     "branch": "Orc",
+     "minDepth": 1,
+     "maxDepth": 2,
+     "rarity": 300,
+     "distribution": "flat"
+    }
+   ]
+  },
+  {
+   "key": "orc_warrior",
+   "enumName": "MONS_ORC_WARRIOR",
+   "name": "orc warrior",
+   "plural": "orc warriors",
+   "unique": false,
+   "glyph": {
+    "char": "o",
+    "colour": "yellow"
+   },
+   "tile": "MONS_ORC_WARRIOR",
+   "hd": 4,
+   "ac": 0,
+   "ev": 13,
+   "flags": [],
+   "spawns": [
+    {
+     "branch": "D",
+     "minDepth": 5,
+     "maxDepth": 12,
+     "rarity": 100,
+     "distribution": "peak"
+    },
+    {
+     "branch": "Orc",
+     "minDepth": 1,
+     "maxDepth": 2,
+     "rarity": 250,
+     "distribution": "flat"
+    }
+   ]
+  },
+  {
+   "key": "ogre",
+   "enumName": "MONS_OGRE",
+   "name": "ogre",
+   "plural": "ogres",
+   "unique": false,
+   "glyph": {
+    "char": "O",
+    "colour": "brown"
+   },
+   "tile": "MONS_OGRE",
+   "hd": 5,
+   "ac": 1,
+   "ev": 6,
+   "flags": [],
+   "spawns": [
+    {
+     "branch": "D",
+     "minDepth": 7,
+     "maxDepth": 13,
+     "rarity": 100,
+     "distribution": "peak"
+    },
+    {
+     "branch": "Orc",
+     "minDepth": 1,
+     "maxDepth": 2,
+     "rarity": 50,
+     "distribution": "flat"
+    }
+   ]
+  },
+  {
+   "key": "yak",
+   "enumName": "MONS_YAK",
+   "name": "yak",
+   "plural": "yaks",
+   "unique": false,
+   "glyph": {
+    "char": "Y",
+    "colour": "brown"
+   },
+   "tile": "MONS_YAK",
+   "hd": 7,
+   "ac": 4,
+   "ev": 7,
+   "flags": [],
+   "spawns": [
+    {
+     "branch": "Lair",
+     "minDepth": 1,
+     "maxDepth": 5,
+     "rarity": 300,
+     "distribution": "flat"
+    }
+   ]
+  },
+  {
+   "key": "hydra",
+   "enumName": "MONS_HYDRA",
+   "name": "hydra",
+   "plural": "hydras",
+   "unique": false,
+   "glyph": {
+    "char": "D",
+    "colour": "green"
+   },
+   "tile": "MONS_HYDRA",
+   "hd": 13,
+   "ac": 0,
+   "ev": 5,
+   "flags": [],
+   "spawns": [
+    {
+     "branch": "Lair",
+     "minDepth": 1,
+     "maxDepth": 5,
+     "rarity": 100,
+     "distribution": "rise"
+    }
+   ],
+   "variantDims": [
+    "heads"
+   ]
+  },
+  {
+   "key": "sigmund",
+   "enumName": "MONS_SIGMUND",
+   "name": "Sigmund",
+   "plural": "Sigmund",
+   "unique": true,
+   "glyph": {
+    "char": "@",
+    "colour": "yellow"
+   },
+   "tile": "MONS_SIGMUND",
+   "hd": 3,
+   "ac": 0,
+   "ev": 11,
+   "flags": [
+    "unique"
+   ],
+   "spawns": []
+  },
+  {
+   "key": "ball_python",
+   "enumName": "MONS_BALL_PYTHON",
+   "name": "ball python",
+   "plural": "ball pythons",
+   "unique": false,
+   "glyph": {
+    "char": "S",
+    "colour": "green"
+   },
+   "tile": "MONS_BALL_PYTHON",
+   "hd": 1,
+   "ac": 0,
+   "ev": 11,
+   "flags": [],
+   "spawns": [
+    {
+     "branch": "D",
+     "minDepth": 1,
+     "maxDepth": 4,
+     "rarity": 100,
+     "distribution": "flat"
+    }
+   ]
+  }
+ ],
+ "aliases": {}
+}
