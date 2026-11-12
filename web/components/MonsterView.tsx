@@ -4,16 +4,23 @@ import { Suspense, useMemo } from "react";
 import { metrics, fmtInt, fmtNum, fmtPct, oneIn } from "@/lib/metrics";
 import { combineMonster, selectionLabel, type CombinedMonsterPlace, type Selection } from "@/lib/select";
 import { CLASS_HELP, CLASS_LABEL, variantLabel } from "@/lib/labels";
-import type { MonsterShard } from "@/lib/shards";
+import type { Meta, MonsterShard } from "@/lib/shards";
 import { Asterisk } from "./FloorView";
+import { LoadState } from "./LoadState";
+import { useDataMany } from "./useData";
 import { VLink } from "./VLink";
 import { defaultSeries, useSeries, type SeriesContext } from "./useSeries";
 
 export interface MonsterViewProps {
+  /** Monster key; its shard is fetched client-side from /data/monster/. */
+  monsterKey: string;
+  ctx: SeriesContext;
+}
+
+interface MonsterTableProps {
   shard: MonsterShard;
   /** Navigation order of places, so rows read top-to-bottom through the dungeon. */
   placeOrder: string[];
-  ctx: SeriesContext;
 }
 
 function placeHref(place: string): string {
@@ -21,7 +28,7 @@ function placeHref(place: string): string {
   return d ? `/${b}/${d}/` : `/${b}/`;
 }
 
-function MonsterTable({ shard, placeOrder, selection, series }: MonsterViewProps & { selection: Selection; series: string[] }) {
+function MonsterTable({ shard, placeOrder, selection, series }: MonsterTableProps & { selection: Selection; series: string[] }) {
   const rows = useMemo(() => {
     const combined = combineMonster(shard, series);
     // Sum variants per place for the main table.
@@ -116,14 +123,22 @@ function MonsterTable({ shard, placeOrder, selection, series }: MonsterViewProps
   );
 }
 
+type Sel = { selection: Selection; series: string[] };
+
+function MonsterLoader({ monsterKey, selection, series }: { monsterKey: string } & Sel) {
+  const l = useDataMany<MonsterShard | Meta>([`monster/${monsterKey}.json`, "meta.json"]);
+  if (l.state !== "ok") return <LoadState of={[l]} />;
+  const [shard, meta] = l.data as [MonsterShard, Meta];
+  return <MonsterTable shard={shard} placeOrder={meta.places} selection={selection} series={series} />;
+}
+
 function WithParams(props: MonsterViewProps) {
-  const s = useSeries(props.ctx);
-  return <MonsterTable {...props} {...s} />;
+  return <MonsterLoader monsterKey={props.monsterKey} {...useSeries(props.ctx)} />;
 }
 
 export function MonsterView(props: MonsterViewProps) {
   return (
-    <Suspense fallback={<MonsterTable {...props} {...defaultSeries(props.ctx)} />}>
+    <Suspense fallback={<MonsterLoader monsterKey={props.monsterKey} {...defaultSeries(props.ctx)} />}>
       <WithParams {...props} />
     </Suspense>
   );

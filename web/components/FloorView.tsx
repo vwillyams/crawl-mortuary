@@ -4,16 +4,23 @@ import { Fragment, Suspense, useMemo, useState } from "react";
 import { metrics, fmtInt, fmtNum, fmtPct, oneIn, type Metrics } from "@/lib/metrics";
 import { combinePlace, selectionLabel, type CombinedKiller, type Selection } from "@/lib/select";
 import { CLASS_HELP, CLASS_LABEL, killerLabel, reachedHelp, variantLabel } from "@/lib/labels";
-import type { MonsterMeta, PlaceShard, ReachedGrade } from "@/lib/shards";
+import { placeFile, type Meta, type MonsterMeta, type PlaceShard, type ReachedGrade } from "@/lib/shards";
 import { Glyph } from "./Glyph";
+import { LoadState } from "./LoadState";
+import { useDataMany } from "./useData";
 import { VLink } from "./VLink";
 import { defaultSeries, useSeries, type SeriesContext } from "./useSeries";
 
 export interface FloorViewProps {
+  /** Place key; its shard is fetched client-side from /data/place/. */
+  place: string;
+  ctx: SeriesContext;
+}
+
+interface FloorTableProps {
   shard: PlaceShard;
   monsters: Record<string, MonsterMeta>;
   causes: Record<string, string>;
-  ctx: SeriesContext;
 }
 
 type SortKey = "share" | "expected" | "per1000" | "perGenerated" | "deaths";
@@ -59,7 +66,7 @@ function Ci({ lo, hi, pct }: { lo: number; hi: number; pct?: boolean }) {
   return <span className="ci">{pct ? `${fmtPct(lo)}–${fmtPct(hi)}` : `${fmtNum(lo, 1)}–${fmtNum(hi, 1)}`}</span>;
 }
 
-function FloorTable({ shard, monsters, causes, selection, series }: FloorViewProps & { selection: Selection; series: string[] }) {
+function FloorTable({ shard, monsters, causes, selection, series }: FloorTableProps & { selection: Selection; series: string[] }) {
   const [sort, setSort] = useState<SortKey>("share");
   const [showFirewood, setShowFirewood] = useState(false);
   const [open, setOpen] = useState<Record<string, boolean>>({});
@@ -258,15 +265,22 @@ function FloorTable({ shard, monsters, causes, selection, series }: FloorViewPro
   );
 }
 
+type Sel = { selection: Selection; series: string[] };
+
+function FloorLoader({ place, selection, series }: { place: string } & Sel) {
+  const l = useDataMany<PlaceShard | Meta>([`place/${placeFile(place)}.json`, "meta.json"]);
+  if (l.state !== "ok") return <LoadState of={[l]} />;
+  const [shard, meta] = l.data as [PlaceShard, Meta];
+  return <FloorTable shard={shard} monsters={meta.monsters} causes={meta.causes} selection={selection} series={series} />;
+}
+
 function FloorWithParams(props: FloorViewProps) {
-  const { selection, series } = useSeries(props.ctx);
-  return <FloorTable {...props} selection={selection} series={series} />;
+  return <FloorLoader place={props.place} {...useSeries(props.ctx)} />;
 }
 
 export function FloorView(props: FloorViewProps) {
-  const d = defaultSeries(props.ctx);
   return (
-    <Suspense fallback={<FloorTable {...props} selection={d.selection} series={d.series} />}>
+    <Suspense fallback={<FloorLoader place={props.place} {...defaultSeries(props.ctx)} />}>
       <FloorWithParams {...props} />
     </Suspense>
   );

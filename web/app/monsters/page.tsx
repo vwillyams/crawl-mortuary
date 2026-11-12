@@ -12,7 +12,7 @@ export default function MonstersPage() {
     <>
       <h1>Monsters</h1>
       <p className="sub">Sorted by characters killed in the selected versions.</p>
-      <MonsterIndex monsters={Object.values(meta.monsters)} ctx={ctx} />
+      <MonsterIndex ctx={ctx} />
     </>
   );
 }

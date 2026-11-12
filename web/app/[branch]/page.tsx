@@ -3,8 +3,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BranchView } from "@/components/BranchView";
 import { FloorView } from "@/components/FloorView";
+import { Summary } from "@/components/Summary";
 import { VLink } from "@/components/VLink";
-import { branchPlaces, getMeta, getPlace, monstersFor } from "@/lib/data";
+import { branchPlaces, getMeta, placeSummary } from "@/lib/data";
 
 export const dynamicParams = false;
 
@@ -25,8 +26,6 @@ export default async function BranchPage({ params }: { params: Promise<{ branch:
   if (!b) notFound();
   const ctx = { available: meta.series.map((s) => s.series), defaultSeries: meta.defaultSeries };
   const places = branchPlaces(meta, b.abbrev);
-  const shards = places.map(getPlace);
-  const keys = new Set(shards.flatMap((s) => Object.values(s.bySeries).flatMap((v) => v.killers.map((k) => k.key))));
   const parent = b.parent ? meta.branches.find((x) => x.abbrev === b.parent) : undefined;
 
   return (
@@ -47,9 +46,12 @@ export default async function BranchPage({ params }: { params: Promise<{ branch:
         {b.parent && b.entryMin != null ? ` · entrance on ${b.parent}:${b.entryMin}${b.entryMax !== b.entryMin ? `–${b.entryMax}` : ""}` : ""}
       </p>
       {places.length === 1 ? (
-        <FloorView shard={shards[0]!} monsters={monstersFor(meta, keys)} causes={meta.causes} ctx={ctx} />
+        <>
+          <Summary text={placeSummary(places[0]!)} />
+          <FloorView place={places[0]!} ctx={ctx} />
+        </>
       ) : (
-        <BranchView abbrev={b.abbrev} shards={shards} monsters={monstersFor(meta, keys)} causes={meta.causes} ctx={ctx} />
+        <BranchView abbrev={b.abbrev} places={places} ctx={ctx} />
       )}
     </>
   );

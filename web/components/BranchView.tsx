@@ -4,20 +4,28 @@ import { Suspense, useMemo } from "react";
 import { fmtInt, fmtNum, fmtPct } from "@/lib/metrics";
 import { combinePlace, type Selection } from "@/lib/select";
 import { killerLabel } from "@/lib/labels";
-import type { MonsterMeta, PlaceShard } from "@/lib/shards";
+import { placeFile, type Meta, type MonsterMeta, type PlaceShard } from "@/lib/shards";
 import { Asterisk } from "./FloorView";
+import { LoadState } from "./LoadState";
+import { useDataMany } from "./useData";
 import { VLink } from "./VLink";
 import { defaultSeries, useSeries, type SeriesContext } from "./useSeries";
 
 export interface BranchViewProps {
   abbrev: string;
-  shards: PlaceShard[];
-  monsters: Record<string, MonsterMeta>;
-  causes: Record<string, string>;
+  /** The branch's places in floor order; their shards are fetched client-side. */
+  places: string[];
   ctx: SeriesContext;
 }
 
-function BranchTable({ abbrev, shards, monsters, causes, series }: BranchViewProps & { selection: Selection; series: string[] }) {
+interface BranchTableProps {
+  abbrev: string;
+  shards: PlaceShard[];
+  monsters: Record<string, MonsterMeta>;
+  causes: Record<string, string>;
+}
+
+function BranchTable({ abbrev, shards, monsters, causes, series }: BranchTableProps & { selection: Selection; series: string[] }) {
   const rows = useMemo(
     () =>
       shards.map((s) => {
@@ -65,14 +73,23 @@ function BranchTable({ abbrev, shards, monsters, causes, series }: BranchViewPro
   );
 }
 
+type Sel = { selection: Selection; series: string[] };
+
+function BranchLoader({ abbrev, places, selection, series }: Omit<BranchViewProps, "ctx"> & Sel) {
+  // TODO(web): a per-branch summary file would save fetching every floor's full shard here.
+  const l = useDataMany<PlaceShard | Meta>(["meta.json", ...places.map((p) => `place/${placeFile(p)}.json`)]);
+  if (l.state !== "ok") return <LoadState of={[l]} />;
+  const [meta, ...shards] = l.data as [Meta, ...PlaceShard[]];
+  return <BranchTable abbrev={abbrev} shards={shards} monsters={meta.monsters} causes={meta.causes} selection={selection} series={series} />;
+}
+
 function WithParams(props: BranchViewProps) {
-  const s = useSeries(props.ctx);
-  return <BranchTable {...props} {...s} />;
+  return <BranchLoader abbrev={props.abbrev} places={props.places} {...useSeries(props.ctx)} />;
 }
 
 export function BranchView(props: BranchViewProps) {
   return (
-    <Suspense fallback={<BranchTable {...props} {...defaultSeries(props.ctx)} />}>
+    <Suspense fallback={<BranchLoader abbrev={props.abbrev} places={props.places} {...defaultSeries(props.ctx)} />}>
       <WithParams {...props} />
     </Suspense>
   );

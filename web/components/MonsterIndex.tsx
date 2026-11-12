@@ -2,17 +2,18 @@
 "use client";
 import { Suspense, useMemo, useState } from "react";
 import { fmtInt } from "@/lib/metrics";
-import type { MonsterMeta } from "@/lib/shards";
+import type { Meta, MonsterMeta } from "@/lib/shards";
 import { Glyph } from "./Glyph";
+import { LoadState } from "./LoadState";
+import { useData } from "./useData";
 import { VLink } from "./VLink";
 import { defaultSeries, useSeries, type SeriesContext } from "./useSeries";
 
 interface Props {
-  monsters: MonsterMeta[];
   ctx: SeriesContext;
 }
 
-function Index({ monsters, series }: Props & { series: string[] }) {
+function Index({ monsters, series }: { monsters: MonsterMeta[]; series: string[] }) {
   const [q, setQ] = useState("");
   const rows = useMemo(
     () =>
@@ -45,14 +46,20 @@ function Index({ monsters, series }: Props & { series: string[] }) {
   );
 }
 
+function IndexLoader({ series }: { series: string[] }) {
+  const l = useData<Meta>("meta.json");
+  const monsters = useMemo(() => (l.state === "ok" ? Object.values(l.data.monsters) : []), [l]);
+  if (l.state !== "ok") return <LoadState of={[l]} />;
+  return <Index monsters={monsters} series={series} />;
+}
+
 function WithParams(props: Props) {
-  const { series } = useSeries(props.ctx);
-  return <Index {...props} series={series} />;
+  return <IndexLoader series={useSeries(props.ctx).series} />;
 }
 
 export function MonsterIndex(props: Props) {
   return (
-    <Suspense fallback={<Index {...props} series={defaultSeries(props.ctx).series} />}>
+    <Suspense fallback={<IndexLoader series={defaultSeries(props.ctx).series} />}>
       <WithParams {...props} />
     </Suspense>
   );

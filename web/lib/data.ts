@@ -25,9 +25,33 @@ export function branchPlaces(meta: Meta, abbrev: string): string[] {
   return meta.places.filter((p) => p === abbrev || p.startsWith(`${abbrev}:`));
 }
 
-/** The slice of monster metadata a set of killer keys needs, to keep client props small. */
-export function monstersFor(meta: Meta, keys: Iterable<string>): Meta["monsters"] {
-  const out: Meta["monsters"] = {};
-  for (const k of keys) if (meta.monsters[k]) out[k] = meta.monsters[k]!;
-  return out;
+/**
+ * A one-line, server-rendered summary of a place for the default series, e.g. "Top killers on D:3 in 0.34:
+ * orc 23%, …". It goes in <meta name="description"> and a no-JS fallback. Keep it tiny: it is the
+ * only data embedded in the page itself.
+ */
+export function placeSummary(place: string, n = 5): string | null {
+  const meta = getMeta();
+  const p = getPlace(place).bySeries[meta.defaultSeries];
+  if (!p || p.deathsTotal === 0) return null;
+  const byKey = new Map<string, number>();
+  for (const k of p.killers) byKey.set(k.key, (byKey.get(k.key) ?? 0) + k.deaths);
+  const top = [...byKey].filter(([, d]) => d > 0).sort((a, b) => b[1] - a[1]).slice(0, n);
+  const label = (k: string) => meta.monsters[k]?.name ?? meta.causes[k] ?? k.replace(/^unresolved:/, "");
+  return `Top killers on ${place} in ${meta.defaultSeries}: ${top
+    .map(([k, d]) => `${label(k)} ${Math.round((100 * d) / p.deathsTotal)}%`)
+    .join(", ")} (of ${p.deathsTotal} deaths).`;
+}
+
+/** Monster counterpart of placeSummary: where it kills most in the default series. */
+export function monsterSummary(key: string, n = 3): string | null {
+  const meta = getMeta();
+  const rows = getMonster(key).bySeries[meta.defaultSeries] ?? [];
+  const byPlace = new Map<string, number>();
+  for (const r of rows) byPlace.set(r.place, (byPlace.get(r.place) ?? 0) + r.deaths);
+  const total = [...byPlace.values()].reduce((a, b) => a + b, 0);
+  if (total === 0) return null;
+  const top = [...byPlace].sort((a, b) => b[1] - a[1]).slice(0, n);
+  const name = meta.monsters[key]?.name ?? key;
+  return `${name} killed ${total} characters in ${meta.defaultSeries}, most often on ${top.map(([p, d]) => `${p} (${d})`).join(", ")}.`;
 }

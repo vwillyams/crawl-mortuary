@@ -2,8 +2,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { FloorView } from "@/components/FloorView";
+import { Summary } from "@/components/Summary";
 import { VLink } from "@/components/VLink";
-import { branchPlaces, getMeta, getPlace, monstersFor } from "@/lib/data";
+import { branchPlaces, getMeta, placeSummary } from "@/lib/data";
 
 export const dynamicParams = false;
 
@@ -18,7 +19,7 @@ type Params = Promise<{ branch: string; depth: string }>;
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { branch, depth } = await params;
-  return { title: `${branch}:${depth}` };
+  return { title: `${branch}:${depth}`, description: placeSummary(`${branch}:${depth}`) ?? undefined };
 }
 
 export default async function FloorPage({ params }: { params: Params }) {
@@ -27,8 +28,6 @@ export default async function FloorPage({ params }: { params: Params }) {
   const b = meta.branches.find((x) => x.abbrev === branch);
   const place = `${branch}:${depth}`;
   if (!b || !meta.places.includes(place)) notFound();
-  const shard = getPlace(place);
-  const keys = new Set(Object.values(shard.bySeries).flatMap((v) => v.killers.map((k) => k.key)));
   const ctx = { available: meta.series.map((s) => s.series), defaultSeries: meta.defaultSeries };
   const d = Number(depth);
   const prev = d > 1 ? `/${branch}/${d - 1}/` : null;
@@ -45,7 +44,8 @@ export default async function FloorPage({ params }: { params: Params }) {
       <p className="sub">
         {prev && <VLink href={prev}>← {branch}:{d - 1}</VLink>} {next && <VLink href={next}>{branch}:{d + 1} →</VLink>}
       </p>
-      <FloorView shard={shard} monsters={monstersFor(meta, keys)} causes={meta.causes} ctx={ctx} />
+      <Summary text={placeSummary(place)} />
+      <FloorView place={place} ctx={ctx} />
     </>
   );
 }

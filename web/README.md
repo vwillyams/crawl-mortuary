@@ -27,9 +27,16 @@ which is gitignored:
 Output: `meta.json` (series, branch tree, monster catalog, causes), `place/<Branch_N>.json`,
 `monster/<key>.json`, and `reached-params.json`. Shard types are in `lib/shards.ts`.
 
-Counts stay additive per series. Pages bake the shard into props at build time. Client components read
-`?v=` (`0.34`, `0.30..0.34`, `all`), sum the selected series (`lib/select.ts`), then compute ratios
-(`lib/metrics.ts`). The static HTML is prerendered with the default (newest) series.
+Counts stay additive per series. **Pages never pass shard data as props.** Next serializes props into each
+page's HTML and its RSC payload files, about 5 copies per page. Instead, client components fetch
+their shard and `meta.json` at runtime (`components/useData.ts`), and the browser/CDN caches them across pages.
+Then they read `?v=` (`0.34`, `0.30..0.34`, `all`), sum the selected series (`lib/select.ts`), and compute
+ratios (`lib/metrics.ts`).
+
+The static HTML holds the page skeleton (navigation, headings, branch tree) plus a one-line summary for
+the default series (`placeSummary` / `monsterSummary` in `lib/data.ts`). The summary goes in
+`<meta name="description">` and in a `<noscript>` fallback. TODO(web): a sitemap once the site URL is known,
+so monster pages are discoverable without JS.
 
 ## Routes
 

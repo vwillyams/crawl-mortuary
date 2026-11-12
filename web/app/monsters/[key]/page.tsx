@@ -3,8 +3,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Glyph } from "@/components/Glyph";
 import { MonsterView } from "@/components/MonsterView";
+import { Summary } from "@/components/Summary";
 import { VLink } from "@/components/VLink";
-import { getMeta, getMonster } from "@/lib/data";
+import { getMeta, monsterSummary } from "@/lib/data";
 
 export const dynamicParams = false;
 
@@ -16,7 +17,7 @@ type Params = Promise<{ key: string }>;
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { key } = await params;
-  return { title: getMeta().monsters[key]?.name ?? key };
+  return { title: getMeta().monsters[key]?.name ?? key, description: monsterSummary(key) ?? undefined };
 }
 
 export default async function MonsterPage({ params }: { params: Params }) {
@@ -40,7 +41,8 @@ export default async function MonsterPage({ params }: { params: Params }) {
         {m.group ? ` · ${m.group}` : ""}
       </p>
       {/* TODO(web): stats block (HD, AC/EV, spells) from the catalog; that's GPL text if we copy crawl's descriptions. */}
-      <MonsterView shard={getMonster(key)} placeOrder={meta.places} ctx={ctx} />
+      <Summary text={monsterSummary(key)} />
+      <MonsterView monsterKey={key} ctx={ctx} />
     </>
   );
 }
